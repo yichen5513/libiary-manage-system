@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ycproject.bookmanage.mapper.RoleMapper">
+    <select id="queryRoleList" parameterType="java.lang.String" resultType="com.ycproject.bookmanage.pojo.role.SysRole">
+        SELECT id, role_code, role_name
+        FROM t_role
+        WHERE role_name LIKE CONCAT('%', #{roleName}, '%')
+          AND is_deleted = '0'
+    </select>
+
+    <update id="removeById" parameterType="java.lang.Long">
+        UPDATE t_role
+        SET is_deleted = '1'
+        WHERE id = #{id}
+    </update>
+</mapper>

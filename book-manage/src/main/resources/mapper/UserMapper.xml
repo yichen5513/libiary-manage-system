@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ycproject.bookmanage.mapper.UserMapper">
+    <!-- 根据用户名查询用户信息 -->
+    <select id="selectByName" parameterType="java.lang.String" resultType="com.ycproject.bookmanage.pojo.user.User">
+        SELECT id, user_name, password, role_id, create_time, update_time
+        FROM t_user
+        WHERE user_name = #{userName}
+    </select>
+    <!-- 新增用户 -->
+    <insert id="addUser" parameterType="com.ycproject.bookmanage.pojo.user.User">
+        INSERT INTO t_user (user_name, password, role_id)
+        VALUES (#{user.userName}, #{user.password}, #{user.roleId});
+        <selectKey resultType="int" order="AFTER" keyProperty="id">
+            SELECT IDENTITY()
+        </selectKey>
+    </insert>
+</mapper>
