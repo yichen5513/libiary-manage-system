@@ -62,7 +62,7 @@ public class UserController {
 
     @ApiOperation(value = "信息接口")
     @GetMapping("/info")
-    public Result<UserInfoVo> info() {
+    public Result<UserInfoVo> info(@RequestParam("userName") String userName) {
         UserInfoVo infoVo = new UserInfoVo();
         infoVo.setName("admin");
         infoVo.setRoles("[admin]");

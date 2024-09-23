@@ -15,9 +15,6 @@ class BookManageApplicationTests {
 
     @Test
     void contextLoads() {
-        List<User> allUsers = userMapper.findAllUsers();
-        allUsers.forEach(System.out::println);
-
     }
 
 }
