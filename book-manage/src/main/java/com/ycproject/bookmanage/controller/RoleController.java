@@ -15,6 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Api(tags = "图书管理系统-后台角色管理")
 @RestController
 @RequestMapping("/sysRole")
@@ -62,6 +64,25 @@ public class RoleController {
         //调用service方法
         int effectRows = roleService.updateById(role);
         if (effectRows > 0) {
+            return Result.ok();
+        } else {
+            return Result.fail();
+        }
+    }
+
+    @ApiOperation("根据id查询")
+    @GetMapping("get/{id}")
+    public Result getById(@PathVariable Long id) {
+        //调用service方法
+        SysRole sysRole = roleService.getById(id);
+        return Result.ok(sysRole);
+    }
+
+    @ApiOperation("批量删除")
+    @DeleteMapping("batchRemove")
+    public Result batchRemove(@RequestBody List<Long> idList) {
+        boolean isSuccess = roleService.removeByIds(idList);
+        if (isSuccess) {
             return Result.ok();
         } else {
             return Result.fail();

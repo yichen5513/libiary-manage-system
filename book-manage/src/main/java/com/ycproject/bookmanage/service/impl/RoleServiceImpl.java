@@ -44,4 +44,14 @@ public class RoleServiceImpl implements IRoleService {
     public int updateById(SysRole role) {
         return roleMapper.updateById(role);
     }
+
+    @Override
+    public SysRole getById(Long id) {
+        return roleMapper.getById(id);
+    }
+
+    @Override
+    public boolean removeByIds(List<Long> idList) {
+        return roleMapper.removeByIds(idList);
+    }
 }

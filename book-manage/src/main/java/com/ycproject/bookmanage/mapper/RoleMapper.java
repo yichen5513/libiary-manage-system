@@ -13,4 +13,10 @@ public interface RoleMapper extends BaseMapper<SysRole> {
     boolean removeById(Long id);
 
     boolean save(SysRole role);
+
+    int updateById(SysRole role);
+
+    SysRole getById(Long id);
+
+    boolean removeByIds(List<Long> idList);
 }
