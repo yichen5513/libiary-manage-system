@@ -9,4 +9,6 @@ public interface IRoleService {
     boolean removeById(Long id);
 
     boolean save(SysRole role);
+
+    int updateById(SysRole role);
 }

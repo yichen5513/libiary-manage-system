@@ -62,11 +62,22 @@ public class UserController {
 
     @ApiOperation(value = "信息接口")
     @GetMapping("/info")
-    public Result<UserInfoVo> info(@RequestParam("userName") String userName) {
-        UserInfoVo infoVo = new UserInfoVo();
-        infoVo.setName("admin");
-        infoVo.setRoles("[admin]");
-        infoVo.setAvatar("https://oss.aliyuncs.com/aliyun_id_photo_bucket/default_handsome.jpg");
+    public Result info(@RequestParam("userName") String userName) {
+        UserInfoVo infoVo = null;
+
+        if (StringUtils.isBlank(userName)) {
+            return Result.fail("用户名不能为空!");
+        }
+
+        try {
+            infoVo = userService.queryUserRole(userName);
+            if (null != infoVo) {
+                infoVo.setAvatar("https://oss.aliyuncs.com/aliyun_id_photo_bucket/default_handsome.jpg");
+            }
+        } catch (Exception e) {
+            throw new CustomDefineException(ResultCodeEnum.SERVICE_ERROR, e.getMessage());
+        }
+
         return Result.ok(infoVo);
     }
 

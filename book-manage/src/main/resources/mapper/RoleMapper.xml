@@ -18,4 +18,11 @@
         INSERT INTO t_role (role_code, role_name)
         VALUES (#{roleCode}, #{roleName})
     </insert>
+
+    <update id="updateById" parameterType="com.ycproject.bookmanage.pojo.role.SysRole">
+        UPDATE t_role
+        SET role_code = #{roleCode},
+            role_name = #{roleName}
+        WHERE id = #{id}
+    </update>
 </mapper>

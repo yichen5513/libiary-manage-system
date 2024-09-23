@@ -55,4 +55,16 @@ public class RoleController {
             return Result.fail();
         }
     }
+
+    @ApiOperation("修改角色")
+    @PutMapping("updateById")
+    public Result updateById(@RequestBody SysRole role) {
+        //调用service方法
+        int effectRows = roleService.updateById(role);
+        if (effectRows > 0) {
+            return Result.ok();
+        } else {
+            return Result.fail();
+        }
+    }
 }

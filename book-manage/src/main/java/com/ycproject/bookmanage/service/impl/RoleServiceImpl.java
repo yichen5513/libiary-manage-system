@@ -39,4 +39,9 @@ public class RoleServiceImpl implements IRoleService {
     public boolean save(SysRole role) {
         return roleMapper.save(role);
     }
+
+    @Override
+    public int updateById(SysRole role) {
+        return roleMapper.updateById(role);
+    }
 }
