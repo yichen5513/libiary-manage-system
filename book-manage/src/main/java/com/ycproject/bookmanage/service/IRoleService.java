@@ -7,4 +7,6 @@ public interface IRoleService {
     PageInfo<SysRole> queryRoleList(int pageNum, int pageSize, String roleName);
 
     boolean removeById(Long id);
+
+    boolean save(SysRole role);
 }

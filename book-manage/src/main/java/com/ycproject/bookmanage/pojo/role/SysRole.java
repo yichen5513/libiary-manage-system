@@ -4,13 +4,11 @@ package com.ycproject.bookmanage.pojo.role;/*
  * @description :  some description
  */
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-@TableName("t_role")
 public class SysRole implements Serializable {
     private static final long serialVersionUID = 6517758992761622414L;
     /**
@@ -21,4 +19,12 @@ public class SysRole implements Serializable {
      * 角色名称
      */
     private String roleName;
+    /**
+     * 创建时间
+     */
+    private String createTime;
+    /**
+     * 更新时间
+     */
+    private String updateTime;
 }

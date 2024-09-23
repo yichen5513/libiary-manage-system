@@ -11,4 +11,6 @@ public interface RoleMapper extends BaseMapper<SysRole> {
     List<SysRole> queryRoleList(String roleName);
 
     boolean removeById(Long id);
+
+    boolean save(SysRole role);
 }

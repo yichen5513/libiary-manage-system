@@ -34,4 +34,9 @@ public class RoleServiceImpl implements IRoleService {
     public boolean removeById(Long id) {
         return roleMapper.removeById(id);
     }
+
+    @Override
+    public boolean save(SysRole role) {
+        return roleMapper.save(role);
+    }
 }

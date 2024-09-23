@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ycproject.bookmanage.mapper.RoleMapper">
     <select id="queryRoleList" parameterType="java.lang.String" resultType="com.ycproject.bookmanage.pojo.role.SysRole">
-        SELECT id, role_code, role_name
+        SELECT id, role_code, role_name, create_time, update_time
         FROM t_role
         WHERE role_name LIKE CONCAT('%', #{roleName}, '%')
           AND is_deleted = '0'
@@ -13,4 +13,9 @@
         SET is_deleted = '1'
         WHERE id = #{id}
     </update>
+
+    <insert id="save" parameterType="com.ycproject.bookmanage.pojo.role.SysRole">
+        INSERT INTO t_role (role_code, role_name)
+        VALUES (#{roleCode}, #{roleName})
+    </insert>
 </mapper>

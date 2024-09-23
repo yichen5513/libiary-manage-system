@@ -44,5 +44,15 @@ public class RoleController {
         }
     }
 
-
+    @ApiOperation("添加角色")
+    @PostMapping("save")
+    public Result save(@RequestBody SysRole role) {
+        //调用service方法
+        boolean isSuccess = roleService.save(role);
+        if (isSuccess) {
+            return Result.ok();
+        } else {
+            return Result.fail();
+        }
+    }
 }
